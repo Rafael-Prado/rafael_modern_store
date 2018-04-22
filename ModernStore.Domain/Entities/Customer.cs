@@ -18,7 +18,7 @@ namespace ModernStore.Domain.Entities
                 .IsRequired(x => x.FirstName, "Nome é obrigatório")
                 .HasMaxLenght(x => x.FirstName, 60)
                 .HasMinLenght(x => x.FirstName, 3)
-                .IsRequired(x => x.FirstName, "Sobrenome é obrigatório")
+                .IsRequired(x => x.LastName, "Sobrenome é obrigatório")
                 .HasMaxLenght(x => x.LastName, 60)
                 .HasMinLenght(x => x.LastName, 3)
                 .IsEmail(x => x.Email, "E-mail é invalido");
