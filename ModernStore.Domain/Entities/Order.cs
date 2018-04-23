@@ -15,7 +15,7 @@ namespace ModernStore.Domain.Entities
         {
             Customer = customer;
             CreateDate = DateTime.Now; ;
-            Number = Guid.NewGuid().ToString().Substring(0,8);
+            Number = Guid.NewGuid().ToString().Substring(0,8).ToUpper();
             Status = EOrderStatus.Created;            
             DeliveryFee = deliveryFee;
             Discount = discount;
@@ -42,10 +42,12 @@ namespace ModernStore.Domain.Entities
 
         public void AddItem(OrderItem item)
         {
+            AddNotifications(item.Notifications);
             if (item.IsValid())
             {
                 _items.Add(item);
             }
         }
+        
     }
 }
