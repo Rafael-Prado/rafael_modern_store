@@ -8,7 +8,7 @@ namespace ModernStore.Domain.Entities
         {
             UserName = userName;
             Password = password;
-            Active = false;
+            Active = true;
         }
 
         public string UserName { get; private set; }
