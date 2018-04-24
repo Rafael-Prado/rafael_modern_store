@@ -38,6 +38,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandler\OrderCommadHandler.cs" />
+    <Compile Include="Commands\RegisterOrderCommad.cs" />
+    <Compile Include="Commands\RegisterOrderItemCommand.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
@@ -45,6 +48,9 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enum\EOrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICustomerRepository.cs" />
+    <Compile Include="Repositories\IOrderRepository.cs" />
+    <Compile Include="Repositories\IProtuctRepository.cs" />
     <Compile Include="ValueObject\Document.cs" />
     <Compile Include="ValueObject\Email.cs" />
     <Compile Include="ValueObject\Name.cs" />
@@ -58,5 +64,6 @@
       <Name>ModernStore.Shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
