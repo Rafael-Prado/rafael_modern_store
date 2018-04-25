@@ -7,7 +7,7 @@ namespace ModernStore.Domain.Entities
 {
     public class Customer: Entity
     {
-        public Customer(Name name, Email email, User user, Document document)
+        public Customer(Name name, Email email, Document document, User user)
         {
             Name = name;
             BirthDate = null;

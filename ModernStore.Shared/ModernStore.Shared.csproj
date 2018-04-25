@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\ICommad.cs" />
+    <Compile Include="Commands\ICommadResult.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

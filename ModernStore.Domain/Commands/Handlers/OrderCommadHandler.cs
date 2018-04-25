@@ -1,10 +1,11 @@
 ﻿using FluentValidator;
-using ModernStore.Domain.Commands;
+using ModernStore.Domain.Commads.Results;
+using ModernStore.Domain.Commands.Inputs;
 using ModernStore.Domain.Entities;
 using ModernStore.Domain.Repositories;
 using ModernStore.Shared.Commands;
 
-namespace ModernStore.Domain.CommandHandler
+namespace ModernStore.Domain.Commads.Handlers
 {
     public class OrderCommadHandler : Notifiable,
         ICommandHandler<RegisterOrderCommad>
@@ -22,7 +23,7 @@ namespace ModernStore.Domain.CommandHandler
             _orderRepository = orderRepository;
         }
 
-        public void Handle(RegisterOrderCommad commad)
+        public ICommadResult Handle(RegisterOrderCommad commad)
         {
             var customer = _customerRepository.Get(commad.Customer);
             var order = new Order(customer, commad.DeliveryFee, commad.Discount);
@@ -35,10 +36,11 @@ namespace ModernStore.Domain.CommandHandler
 
             AddNotifications(order.Notifications);
 
-            if (order.IsValid())
+            if (IsValid())
             {
-                _orderRepository.Save(order);
+                _orderRepository.Save(order);                
             }
+            return new RegisterOrderCommadResult(order.Number);
         }
     }
 }

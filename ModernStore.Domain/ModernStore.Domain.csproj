@@ -38,9 +38,14 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandler\OrderCommadHandler.cs" />
-    <Compile Include="Commands\RegisterOrderCommad.cs" />
-    <Compile Include="Commands\RegisterOrderItemCommand.cs" />
+    <Compile Include="Commands\Results\RegisterCustomerCommadResult.cs" />
+    <Compile Include="Commands\Results\RegisterOrderCommadResult.cs" />
+    <Compile Include="Commands\Handlers\CustomerCommadHandler.cs" />
+    <Compile Include="Commands\Handlers\OrderCommadHandler.cs" />
+    <Compile Include="Commands\Inputs\RegisterCustomerCommand.cs" />
+    <Compile Include="Commands\Inputs\RegisterOrderCommad.cs" />
+    <Compile Include="Commands\Inputs\RegisterOrderItemCommand.cs" />
+    <Compile Include="Commands\Inputs\UpdateCustomerCommad.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
@@ -51,6 +56,12 @@
     <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IProtuctRepository.cs" />
+    <Compile Include="Resources\EmailTemplaites.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailTemplaites.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IEmailService.cs" />
     <Compile Include="ValueObject\Document.cs" />
     <Compile Include="ValueObject\Email.cs" />
     <Compile Include="ValueObject\Name.cs" />
@@ -64,6 +75,11 @@
       <Name>ModernStore.Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EmailTemplaites.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailTemplaites.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
