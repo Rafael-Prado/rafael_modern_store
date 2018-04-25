@@ -1,14 +1,11 @@
 ﻿using FluentValidator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModernStore.Domain.ValueObject
 {
     public class Name: Notifiable
     {
+        protected Name() { }
+       
         public Name(string firstName, string lastName)
         {
             FirstName = firstName;
