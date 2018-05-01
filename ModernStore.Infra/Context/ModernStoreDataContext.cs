@@ -6,7 +6,9 @@ namespace ModernStore.Infra.Context
 {
     public class ModernStoreDataContext: DbContext
     {
-        public ModernStoreDataContext(): base("ModernStoreConnectionString")
+        private const string ModernStoreConnectionString = @"Server=localhost\SQLEXPRESS;Database=modernStore;Trusted_Connection=True";
+        
+        public ModernStoreDataContext(): base(ModernStoreConnectionString)
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;

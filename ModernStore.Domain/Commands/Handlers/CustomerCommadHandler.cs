@@ -44,11 +44,12 @@ namespace ModernStore.Domain.Commads.Handlers
             AddNotifications(user.Notifications);
             AddNotifications(customer.Notifications);
 
+
+            if (!IsValid())
+                return null;
+
             //Passo 4 Salve customer
-            if (IsValid())
-            {
-                _customerRepository.Save(customer);
-            }
+            _customerRepository.Save(customer);
 
             //Passo 5 Enviar email.
             _emailService.Send(customer.Name.ToString(), customer.Email.Address,

@@ -1,16 +1,16 @@
-using ModernStore.Infra.Context;
 using System.Data.Entity.Migrations;
-
 namespace ModernStore.Infra.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<ModernStoreDataContext>
+    
+
+    internal sealed class Configuration : DbMigrationsConfiguration<Context.ModernStoreDataContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ModernStoreDataContext context)
+        protected override void Seed(Context.ModernStoreDataContext context)
         {
             //  This method will be called after migrating to the latest version.
 

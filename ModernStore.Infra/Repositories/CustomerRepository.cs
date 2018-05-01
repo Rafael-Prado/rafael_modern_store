@@ -1,14 +1,18 @@
-﻿using ModernStore.Domain.Entities;
+﻿using Dapper;
+using ModernStore.Domain.Commands.Results;
+using ModernStore.Domain.Entities;
 using ModernStore.Domain.Repositories;
 using ModernStore.Infra.Context;
 using System;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace ModernStore.Infra.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
+        private const string ConnectionString = @"Server=localhost\SQLEXPRESS;Database=modernStore;Trusted_Connection=True";
         private readonly ModernStoreDataContext _context;
         public CustomerRepository(ModernStoreDataContext context)
         {
@@ -35,7 +39,7 @@ namespace ModernStore.Infra.Repositories
                .Include(x => x.User)
                .FirstOrDefault(x => x.Document.Number == document);
         }
-        
+
         public void Save(Customer customer)
         {
             _context.Customers.Add(customer);
@@ -51,5 +55,36 @@ namespace ModernStore.Infra.Repositories
             throw new NotImplementedException();
         }
 
+
+        public GetCustomerCommadResult GetUserName(string userName)
+        {
+            
+            //    return _context.Customers
+            //        .Include(x => x.User)
+            //        .AsNoTracking()
+            //        .Select(x => new GetCustomerCommadResult
+            //    {
+            //        Name = x.Name.ToString(),
+            //        Document = x.Document.Number,
+            //        Active = x.User.Active,
+            //        Email = x.Email.Address,
+            //        Password = x.User.Password,
+            //        UserName = x.User.Password
+            //    }).FirstOrDefault(x => x.UserName == userName);
+
+        var query = "SELECT * FROM [GetCustomerInfoView] WHERE [Active]=1 AND [Username]=@username";
+            using (var conn = new SqlConnection(ConnectionString))
+            {
+                conn.Open();
+                return conn
+                    .Query<GetCustomerCommadResult>(query,
+                    new { username = userName })
+                    .FirstOrDefault();
+            }
+
+        }
     }
-}
+}  
+    
+
+
