@@ -8,6 +8,7 @@
     <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="FluentValidator" Version="1.0.5" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.2" />

@@ -38,6 +38,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Inputs\AuthenticateUserCommand.cs" />
     <Compile Include="Commands\Results\GetCustomerCommadResult.cs" />
     <Compile Include="Commands\Results\GetProductListCommadResult.cs" />
     <Compile Include="Commands\Results\RegisterCustomerCommadResult.cs" />

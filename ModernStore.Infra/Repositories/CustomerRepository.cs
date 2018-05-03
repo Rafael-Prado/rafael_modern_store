@@ -55,6 +55,15 @@ namespace ModernStore.Infra.Repositories
             throw new NotImplementedException();
         }
 
+        public Customer GetUser(string userName)
+        {
+            return _context
+                .Customers
+                .Include(x => x.User)
+                .AsNoTracking()
+                .FirstOrDefault(x => x.User.UserName == userName);
+        }
+
 
         public GetCustomerCommadResult GetUserName(string userName)
         {
@@ -83,6 +92,8 @@ namespace ModernStore.Infra.Repositories
             }
 
         }
+
+        
     }
 }  
     
