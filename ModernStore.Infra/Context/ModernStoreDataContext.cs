@@ -1,14 +1,14 @@
 ﻿using ModernStore.Domain.Entities;
 using ModernStore.Infra.Mappings;
+using ModernStore.Shared;
 using System.Data.Entity;
 
 namespace ModernStore.Infra.Context
 {
     public class ModernStoreDataContext: DbContext
     {
-        private const string ModernStoreConnectionString = @"Server=localhost\SQLEXPRESS;Database=modernStore;Trusted_Connection=True";
-        
-        public ModernStoreDataContext(): base(ModernStoreConnectionString)
+                
+        public ModernStoreDataContext(): base(Runtime.ConnectionString)
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;

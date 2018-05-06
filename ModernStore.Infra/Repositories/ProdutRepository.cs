@@ -3,6 +3,7 @@ using ModernStore.Domain.Commands.Results;
 using ModernStore.Domain.Entities;
 using ModernStore.Domain.Repositories;
 using ModernStore.Infra.Context;
+using ModernStore.Shared;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,8 +13,7 @@ namespace ModernStore.Infra.Repositories
 {
     public class ProdutRepository : IProtuctRepository
     {
-        private const string ConnectionString = @"Server=localhost\SQLEXPRESS;Database=modernStore;Trusted_Connection=True";
-        private readonly ModernStoreDataContext _context;
+       private readonly ModernStoreDataContext _context;
 
         public ProdutRepository(ModernStoreDataContext context)
         {
@@ -31,7 +31,7 @@ namespace ModernStore.Infra.Repositories
         public IEnumerable<GetProductListCommadResult> Get()
         {
             var query = "Select Id, Title, Price,[Image] from Product";
-            using (var conn = new SqlConnection(ConnectionString))
+            using (var conn = new SqlConnection(Runtime.ConnectionString))
             {
                 conn.Open();
                 return conn
