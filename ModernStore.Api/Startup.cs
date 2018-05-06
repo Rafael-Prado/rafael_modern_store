@@ -22,6 +22,8 @@ namespace ModernStore.Api
 {
     public class Startup
     {
+
+        // Finalizado
         public IConfiguration Configuration { get; set; }
         private const string ISSUER = "c1f51f42";
         private const string AUDIENCE = "c6bbbb645024";
